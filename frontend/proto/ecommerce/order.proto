@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package ecommerce;
+
+message OrderAddress {
+    string firstName = 1;
+    string lastName = 2;
+    string email = 3;
+    string phoneNumber = 4;
+    string street = 5;
+    string houseNumber = 6;
+    string flatNumber = 7;
+    string zipCode = 8;
+    string city = 9;
+    string country = 10;
+}
+
+message OrderItem {
+    int64 productId = 1;
+    string productName = 2;
+    int32 quantity = 3;
+    double price = 4;
+    string imageUrl = 5;
+}
+
+enum OrderStatus {
+    PENDING = 0;
+    PAID = 1;
+    SHIPPED = 2;
+}
+
+message Order {
+    string orderId = 1;
+    string userId = 2;
+    OrderStatus status = 3;
+    double totalAmount = 4;
+    repeated OrderItem items = 5;
+    OrderAddress address = 6;
+    string createdAt = 7;
+}
+
+message CreateOrderRequest {
+    OrderAddress address = 1;
+}
+
+message OrderResponse {
+    bool success = 1;
+    optional Order order = 2;
+    optional string errorCode = 3;
+}
+
+message GetUserOrdersResponse {
+    repeated Order orders = 1;
+}
+
+message UpdateOrderStatusRequest {
+    OrderStatus status = 1;
+}

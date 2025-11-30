@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package ecommerce;
+
+option java_package = "it.wszostak.dswecommerce.ecommerce.proto";
+option java_multiple_files = true;
+option java_outer_classname = "ProductProto";
+
+enum StatusType {
+  ACTIVE = 0;
+  INACTIVE = 1;
+}
+
+message Product {
+  int64 id = 1;
+  string userId = 2;
+  string productName = 3;
+  repeated string images = 4;
+  double price = 5;
+  string description = 6;
+  int32 stock = 7;
+  string code = 8;
+  string ean = 9;
+  StatusType status = 10;
+}
+
+message CreateProductRequest {
+  string productName = 1;
+  double price = 2;
+  string description = 3;
+  int32 stock = 4;
+  string code = 5;
+  string ean = 6;
+}
+
+message UpdateProductRequest {
+  int64 id = 1;
+  string productName = 2;
+  double price = 3;
+  string description = 4;
+  int32 stock = 5;
+  string code = 6;
+  string ean = 7;
+}
+
+message DeleteProductRequest {
+  int64 id = 1;
+}
+
+message GetProductRequest {
+  int64 id = 1;
+}
+
+message GetAllProductsRequest {}
+
+message ProductResponse {
+  bool success = 1;
+  string errorCode = 2;
+  Product product = 3;
+}
+
+message DeleteProductResponse {
+  bool success = 1;
+  string errorCode = 2;
+}
+
+message GetAllProductsResponse {
+  repeated Product products = 1;
+}

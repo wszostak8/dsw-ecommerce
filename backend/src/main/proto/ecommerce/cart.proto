@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package ecommerce;
+
+option java_package = "it.wszostak.dswecommerce.ecommerce.proto";
+option java_multiple_files = true;
+option java_outer_classname = "CartProto";
+
+message CartItem {
+  int64 productId = 1;
+  string productName = 2;
+  string imageUrl = 3;
+  int32 quantity = 4;
+  double price = 5;
+}
+
+message Cart {
+  string id = 1;
+  repeated CartItem items = 2;
+  double totalPrice = 3;
+}
+
+message AddItemRequest {
+  int64 productId = 1;
+  int32 quantity = 2;
+}
+
+message UpdateItemQuantityRequest {
+  int32 newQuantity = 1;
+}
+
+message CartResponse {
+  bool success = 1;
+  optional Cart cart = 2;
+  optional string errorCode = 3;
+}

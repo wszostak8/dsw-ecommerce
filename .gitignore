@@ -1,0 +1,10 @@
+/backend/.gradle
+/backend/.idea
+/backend/build
+/frontend/.next
+/frontend/.idea
+/frontend/node_modules
+/old
+.vscode
+.idea
+.DS_Store

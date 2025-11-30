@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package ecommerce;
+
+message Address {
+    string id = 1;
+    string userId = 2;
+    string firstName = 3;
+    string lastName = 4;
+    string email = 5;
+    string phoneNumber = 6;
+    string street = 7;
+    string houseNumber = 8;
+    string flatNumber = 9;
+    string zipCode = 10;
+    string city = 11;
+    string country = 12;
+}
+
+message CreateAddressRequest {
+    Address address = 1;
+}
+
+message UpdateAddressRequest {
+    string id = 1;
+    Address address = 2;
+}
+
+message AddressResponse {
+    bool success = 1;
+    optional Address address = 2;
+    optional string errorCode = 3;
+}

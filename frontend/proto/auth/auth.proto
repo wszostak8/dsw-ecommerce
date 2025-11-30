@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package auth;
+
+message VerifyPasswordResetCodeRequest {
+  string email = 1;
+  string token = 2;
+}
+
+message VerifyPasswordResetCodeResponse {
+  bool success = 1;
+  string token = 2;
+  string errorCode = 3;
+}
+
+message PasswordResetRequest {
+  string email = 1;
+}
+
+message PasswordResetResponse {
+  bool success = 1;
+  string errorCode = 2;
+}
+
+message PerformPasswordResetRequest {
+  string token = 1;
+  string newPassword = 2;
+}
+
+message PerformPasswordResetResponse {
+  bool success = 1;
+  string errorCode = 2;
+}
+
+message LogoutResponse {
+  bool success = 1;
+  string errorCode = 2;
+}
+
+message RegisterRequest {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message RegisterResponse {
+  bool success = 1;
+  string message = 2;
+  UserInfo user = 3;
+  string errorCode = 4;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  bool success = 1;
+  string message = 2;
+  UserInfo user = 3;
+  string errorCode = 4;
+}
+
+enum Role {
+  USER = 0;
+  ADMIN = 1;
+}
+
+message UserInfo {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  Role role = 4;
+  bool twoFactorAuthentication = 5;
+  string createdAt = 6;
+}
